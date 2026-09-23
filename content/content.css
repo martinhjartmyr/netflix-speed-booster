@@ -1,0 +1,82 @@
+/* Netflix Speed Booster - HUD Overlay Styles */
+
+.nfx-speed-hud-container {
+  position: absolute;
+  top: 54px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px) scale(0.92);
+  z-index: 2147483647;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.18s;
+}
+
+.nfx-speed-hud-container.nfx-hud-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.nfx-speed-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  background: rgba(18, 18, 18, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #ffffff;
+  font-family: Netflix Sans, Helvetica Neue, Segoe UI, Roboto, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+
+.nfx-speed-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: #E50914;
+  border-radius: 50%;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.55);
+}
+
+.nfx-speed-icon {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+  margin-left: 1px;
+}
+
+.nfx-speed-text {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 16px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.nfx-speed-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-left: -2px;
+}
+
+/* Fallback fixed positioning if no player container is available */
+.nfx-speed-hud-container.nfx-hud-fixed {
+  position: fixed;
+  top: 50px;
+}

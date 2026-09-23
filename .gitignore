@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node / Packaging
+node_modules/
+dist/
+*.crx
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Local Store Drafts / Internal Notes
+CHROMEWEBSTORE.md

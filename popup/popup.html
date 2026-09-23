@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix Speed Booster Settings</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo-group">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" class="icon-svg">
+            <path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="title">Speed Booster</h1>
+          <p class="subtitle">Netflix Playback Settings</p>
+        </div>
+      </div>
+      <span class="status-badge" id="statusBadge">Ready</span>
+    </header>
+
+    <!-- SECTION 1: Shortcut Configuration -->
+    <section class="card highlight-card">
+      <div class="card-header">
+        <span class="card-title">Hold Shortcut</span>
+        <button type="button" class="hotkey-btn" id="hotkeyBtn" title="Click to record custom key">
+          <span class="record-dot"></span>
+          <svg class="hotkey-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2.5"/>
+            <path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M6 12h.01M10 12h.01M14 12h.01M18 12h.01M7 16h10"/>
+          </svg>
+          <kbd id="hotkeyDisplay">D</kbd>
+        </button>
+      </div>
+      <p class="card-desc">Key to hold while watching to boost speed</p>
+
+      <!-- Quick shortcut presets -->
+      <div class="shortcut-presets" id="shortcutPresets">
+        <button type="button" class="shortcut-chip active" data-code="KeyD" data-display="D">D (Default)</button>
+        <button type="button" class="shortcut-chip" data-code="Space" data-display="Space">Space</button>
+        <button type="button" class="shortcut-chip" data-code="KeyS" data-display="S">S</button>
+        <button type="button" class="shortcut-chip" data-code="ArrowRight" data-display="→ Right">→ Right</button>
+        <button type="button" class="shortcut-chip" data-code="KeyF" data-display="F">F</button>
+      </div>
+
+      <!-- Custom Key Selector Row -->
+      <div class="custom-key-row">
+        <div class="custom-select-wrapper">
+          <span class="custom-label">Custom:</span>
+          <select id="customKeySelect" class="custom-key-select" aria-label="Select custom shortcut key">
+            <option value="" disabled selected>Select key...</option>
+            <optgroup label="Common Keys">
+              <option value="KeyE">E</option>
+              <option value="KeyC">C</option>
+              <option value="KeyW">W</option>
+              <option value="KeyR">R</option>
+              <option value="KeyA">A</option>
+              <option value="KeyX">X</option>
+              <option value="KeyZ">Z</option>
+              <option value="KeyQ">Q</option>
+              <option value="KeyV">V</option>
+              <option value="KeyG">G</option>
+              <option value="KeyT">T</option>
+            </optgroup>
+            <optgroup label="Arrow Keys">
+              <option value="ArrowRight">→ Right Arrow</option>
+              <option value="ArrowLeft">← Left Arrow</option>
+              <option value="ArrowUp">↑ Up Arrow</option>
+              <option value="ArrowDown">↓ Down Arrow</option>
+            </optgroup>
+            <optgroup label="All Letters (A-Z)">
+              <option value="KeyA">A</option>
+              <option value="KeyB">B</option>
+              <option value="KeyC">C</option>
+              <option value="KeyD">D</option>
+              <option value="KeyE">E</option>
+              <option value="KeyF">F</option>
+              <option value="KeyG">G</option>
+              <option value="KeyH">H</option>
+              <option value="KeyI">I</option>
+              <option value="KeyJ">J</option>
+              <option value="KeyK">K</option>
+              <option value="KeyL">L</option>
+              <option value="KeyM">M</option>
+              <option value="KeyN">N</option>
+              <option value="KeyO">O</option>
+              <option value="KeyP">P</option>
+              <option value="KeyQ">Q</option>
+              <option value="KeyR">R</option>
+              <option value="KeyS">S</option>
+              <option value="KeyT">T</option>
+              <option value="KeyU">U</option>
+              <option value="KeyV">V</option>
+              <option value="KeyW">W</option>
+              <option value="KeyX">X</option>
+              <option value="KeyY">Y</option>
+              <option value="KeyZ">Z</option>
+            </optgroup>
+            <optgroup label="Numbers">
+              <option value="Digit1">1</option>
+              <option value="Digit2">2</option>
+              <option value="Digit3">3</option>
+              <option value="Digit4">4</option>
+              <option value="Digit5">5</option>
+              <option value="Digit6">6</option>
+              <option value="Digit7">7</option>
+              <option value="Digit8">8</option>
+              <option value="Digit9">9</option>
+              <option value="Digit0">0</option>
+            </optgroup>
+            <optgroup label="Modifiers & Others">
+              <option value="ShiftLeft">Shift</option>
+              <option value="ControlLeft">Ctrl</option>
+              <option value="AltLeft">Alt</option>
+              <option value="Space">Space</option>
+              <option value="Tab">Tab</option>
+              <option value="CapsLock">Caps Lock</option>
+              <option value="Backquote">` (Backtick)</option>
+              <option value="BracketRight">] (Right Bracket)</option>
+              <option value="BracketLeft">[ (Left Bracket)</option>
+              <option value="Semicolon">; (Semicolon)</option>
+              <option value="Period">. (Period)</option>
+              <option value="Comma">, (Comma)</option>
+              <option value="Slash">/ (Slash)</option>
+              <option value="Minus">- (Minus)</option>
+              <option value="Equal">= (Equal)</option>
+            </optgroup>
+          </select>
+        </div>
+        <button type="button" class="record-input-btn" id="recordInputBtn" title="Press any key on keyboard">
+          <span class="record-dot"></span>
+          <span id="recordBtnText">Record Key</span>
+        </button>
+      </div>
+
+      <div class="hotkey-hint" id="hotkeyHint">Choose a preset, select from dropdown, or click Record Key</div>
+    </section>
+
+    <!-- SECTION 2: Speed Popup (HUD) Display -->
+    <section class="card">
+      <div class="toggle-row">
+        <div>
+          <span class="toggle-label">Speed Popup on Screen</span>
+          <p class="card-desc">Show floating badge on video when pressed</p>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="overlayToggle" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <!-- Live Interactive Badge Preview -->
+      <div class="badge-preview-box" id="badgePreviewBox">
+        <div class="preview-badge" id="previewBadge">
+          <div class="preview-icon">
+            <svg viewBox="0 0 24 24" class="preview-svg">
+              <path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/>
+            </svg>
+          </div>
+          <span class="preview-speed" id="previewSpeed">2.0x</span>
+          <span class="preview-label">Speed</span>
+        </div>
+        <span class="preview-status" id="previewStatus">Visible when pressed</span>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Boost Speed Multiplier -->
+    <section class="card">
+      <div class="card-header">
+        <label class="card-title">Boost Speed</label>
+        <span class="speed-value" id="speedDisplay">2.0x</span>
+      </div>
+
+      <div class="preset-group" id="presetGroup">
+        <button type="button" class="preset-btn" data-speed="1.5">1.5x</button>
+        <button type="button" class="preset-btn" data-speed="1.75">1.75x</button>
+        <button type="button" class="preset-btn active" data-speed="2.0">2.0x</button>
+        <button type="button" class="preset-btn" data-speed="2.5">2.5x</button>
+        <button type="button" class="preset-btn" data-speed="3.0">3.0x</button>
+      </div>
+
+      <div class="slider-wrapper">
+        <input type="range" id="speedSlider" min="1.25" max="4.0" step="0.25" value="2.0" class="range-slider">
+        <div class="slider-ticks">
+          <span>1.25x</span>
+          <span>2.0x</span>
+          <span>3.0x</span>
+          <span>4.0x</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Mouse Click & Hold -->
+    <section class="card">
+      <div class="card-header">
+        <div>
+          <span class="card-title">Mouse Click & Hold</span>
+          <p class="card-desc">Hold left click on the video area</p>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="mouseHoldToggle" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="sub-setting" id="mouseDelaySection">
+        <div class="sub-setting-header">
+          <span class="sub-title">Activation Delay</span>
+          <span class="sub-value" id="delayDisplay">250 ms</span>
+        </div>
+        <input type="range" id="mouseDelaySlider" min="150" max="600" step="25" value="250" class="range-slider">
+        <p class="sub-desc">How long to hold mouse before speed activates.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <button type="button" class="reset-link" id="resetBtn">Reset Defaults</button>
+      <span class="save-status" id="saveStatus">✓ Settings saved</span>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
